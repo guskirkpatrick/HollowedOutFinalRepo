@@ -63,7 +63,7 @@ public class player : MonoBehaviour
     {
 
         //-1 to +1
-
+     
         float horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * speed * horizontalInput * Time.deltaTime);//float
 
