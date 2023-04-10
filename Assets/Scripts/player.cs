@@ -28,6 +28,8 @@ public class player : MonoBehaviour
     /// <summary>
     /// /////////////////
     /// </summary>
+    
+    //[SerializeField] private AudioSource spikeSoundEffect
 
     void Start()
     {

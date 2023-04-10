@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerFollower : MonoBehaviour
 {
+    //Unity says player has not been assigned in PlayerFollower, and it won't let me play the game -Travis
     public Transform player;
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
