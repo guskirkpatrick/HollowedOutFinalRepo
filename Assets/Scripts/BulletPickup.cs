@@ -33,7 +33,7 @@ public class BulletPickup : MonoBehaviour
     }
     void jiggle()
     {
-        if (transform.position.y < (startY - .3f) || transform.position.y > (startY + .3f))
+        if (transform.position.y < (startY - .4f) || transform.position.y > (startY + .4f))
             flippy *= -1;
 
     }

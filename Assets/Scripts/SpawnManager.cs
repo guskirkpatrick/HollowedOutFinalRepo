@@ -38,12 +38,12 @@ public class Spawner : MonoBehaviour
 
     IEnumerator PlatformSpawnRoutine()
     {
-        while (!GM.gameOver)
-            //find amount of platforms below is not equal to 
-        {
-            int random = Random.Range(0, 3);
-            Instantiate(Platforms[random], new Vector3(Random.Range(-6.0f, +6.0f), 6.5f, 0), Quaternion.identity);
-            yield return new WaitForSeconds(20.0f);
-        }
+         while (!GM.gameOver)
+             //find amount of platforms below is not equal to 
+         {
+             int random = Random.Range(0, 3);
+             Instantiate(Platforms[random], new Vector3(Random.Range(-5.0f, +5.0f), 6.5f, 0), Quaternion.identity);
+             yield return new WaitForSeconds(20.0f);
+         }
     }
 }
