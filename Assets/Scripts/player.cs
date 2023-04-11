@@ -11,8 +11,18 @@ public class player : MonoBehaviour
     [SerializeField] private GameObject BulletPrefab = null;
     [SerializeField] private int bullets = 5;
     [SerializeField] private int lives = 5;
+
+    //I added a similar piece of code in the UIManager, I'm trying to get a running depth (score?) onscreen as the player descends -Travis
+    [SerializeField] private double depth = 0;
+
+
     [SerializeField] Camera Camera2 = null;
     [SerializeField] Camera MainCamera = null;
+    [SerializeField] private AudioSource spikeSoundEffect;
+    [SerializeField] private AudioSource shootSoundEffect;
+    [SerializeField] private AudioSource bulletPickupSoundEffect;
+
+
     private Rigidbody2D rb;
 
 
@@ -28,8 +38,7 @@ public class player : MonoBehaviour
     /// <summary>
     /// /////////////////
     /// </summary>
-    
-    //[SerializeField] private AudioSource spikeSoundEffect
+
 
     void Start()
     {
@@ -45,6 +54,9 @@ public class player : MonoBehaviour
         SM.StartSpawn();
         UI.UpdateLives(lives);
         UI.UpdateBullets(bullets);
+
+        //I'm currently working to implement this -Travis
+        //UI.UpdateDepth(depth);
     
         rb = GetComponent<Rigidbody2D>();
 
@@ -100,6 +112,10 @@ public class player : MonoBehaviour
             UI.UpdateBullets(bullets);
             rb.AddForce(gun.transform.right * -1f * 630);
 
+
+            //the below plays a sound when the gun is fired -Travis
+            shootSoundEffect.Play();
+
             //rotation stuff
             // Vector2 Dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             //  float Angle = Mathf.Atan2(Dir.y, Dir.x) * Mathf.Rad2Deg;
@@ -123,6 +139,9 @@ public class player : MonoBehaviour
 
             lives--;
             UI.UpdateLives(lives);
+            //The below plays a sound when player hits spikes -Travis
+            spikeSoundEffect.Play();
+
             if (lives <= 0)
             {
              //  Camera2.enabled = true;
@@ -136,6 +155,8 @@ public class player : MonoBehaviour
         {
             bullets++;
             UI.UpdateBullets(bullets);
+            //the below plays a sound effect when bullet is picked up -Travis
+            bulletPickupSoundEffect.Play();
         }
     }
 }

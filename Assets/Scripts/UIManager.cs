@@ -10,6 +10,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text LifeDisplay;
     [SerializeField] private Text BulletDisplay;
 
+    //I added the below line to display the users depth (score?) in the hud -Travis
+    [SerializeField] private Text DepthDisplay;
+
     [SerializeField] private GameObject TitleScreen;
 
 
@@ -42,9 +45,15 @@ public class UIManager : MonoBehaviour
         BulletDisplay.text = "Bullets: " + bullets;
     }
 
+    //I'm currently working to implement this -Travis
+   /* public void UpdateDepth(double depth)
+    {
+        //I need to change the below
+        BulletDisplay.text = "Bullets: " + bullets;
+    } */
 
 
-       
+
 
 
 
