@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour
         while (!GM.gameOver)
         {
             int random = Random.Range(0, 3);
-            Instantiate(Spikes[random], new Vector3(Random.Range(-8.0f, +8.0f), 6.5f, 0), Quaternion.identity);
+            Instantiate(Spikes[random], new Vector3(Random.Range(-6.5f, +6.5f), 6.5f, 0), Quaternion.identity);
             yield return new WaitForSeconds(25.0f);
         }
     }
@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
             //find amount of platforms below is not equal to 
         {
             int random = Random.Range(0, 3);
-            Instantiate(Platforms[random], new Vector3(Random.Range(-8.0f, +8.0f), 6.5f, 0), Quaternion.identity);
+            Instantiate(Platforms[random], new Vector3(Random.Range(-6.0f, +6.0f), 6.5f, 0), Quaternion.identity);
             yield return new WaitForSeconds(20.0f);
         }
     }
