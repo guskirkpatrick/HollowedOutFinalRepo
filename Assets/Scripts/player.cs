@@ -10,7 +10,7 @@ public class player : MonoBehaviour
     [SerializeField] private GameObject PlayerExplosion;
     [SerializeField] private GameObject BulletPrefab = null;
     [SerializeField] private int bullets = 5;
-    [SerializeField] private int lives = 5;
+    [SerializeField] private int lives = 3;
     [SerializeField] Camera Camera2 = null;
     [SerializeField] Camera MainCamera = null;
     private Rigidbody2D rb;
@@ -59,6 +59,10 @@ public class player : MonoBehaviour
 
         jump();
         shoot();
+        if (Input.GetKeyDown(KeyCode.Tab))
+            {
+            reset();
+        }
     }
 
     void move()
@@ -85,7 +89,7 @@ public class player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)&&rb.velocity.y==0)
         {
             //Debug.Log("jump1");
-            rb.AddForce(new Vector2(rb.velocity.x, jumpHeight*120));
+            rb.AddForce(new Vector2(rb.velocity.x, jumpHeight*2));
         }
     }
 
@@ -107,6 +111,18 @@ public class player : MonoBehaviour
 
             //  transform.rotation = rotation;
         }
+    }
+
+    void reset()
+    {
+       
+        transform.position = new Vector2(0, 2);
+        bullets = 5;
+        UI.UpdateBullets(bullets);
+        lives = 3;
+        UI.UpdateLives(lives);  
+        //add more stuff
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
