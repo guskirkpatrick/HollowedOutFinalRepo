@@ -10,12 +10,7 @@ public class player : MonoBehaviour
     [SerializeField] private GameObject PlayerExplosion;
     [SerializeField] private GameObject BulletPrefab = null;
     [SerializeField] private int bullets = 5;
-    [SerializeField] private int lives = 5;
-
-    //I added a similar piece of code in the UIManager, I'm trying to get a running depth (score?) onscreen as the player descends -Travis
-    [SerializeField] private double depth = 0;
-
-
+    [SerializeField] private int lives = 3;
     [SerializeField] Camera Camera2 = null;
     [SerializeField] Camera MainCamera = null;
     [SerializeField] private AudioSource spikeSoundEffect;
@@ -71,6 +66,10 @@ public class player : MonoBehaviour
 
         jump();
         shoot();
+        if (Input.GetKeyDown(KeyCode.Tab))
+            {
+            reset();
+        }
     }
 
     void move()
@@ -97,7 +96,7 @@ public class player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)&&rb.velocity.y==0)
         {
             //Debug.Log("jump1");
-            rb.AddForce(new Vector2(rb.velocity.x, jumpHeight*120));
+            rb.AddForce(new Vector2(rb.velocity.x, jumpHeight*2));
         }
     }
 
@@ -123,6 +122,18 @@ public class player : MonoBehaviour
 
             //  transform.rotation = rotation;
         }
+    }
+
+    void reset()
+    {
+       
+        transform.position = new Vector2(0, 2);
+        bullets = 5;
+        UI.UpdateBullets(bullets);
+        lives = 3;
+        UI.UpdateLives(lives);  
+        //add more stuff
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
