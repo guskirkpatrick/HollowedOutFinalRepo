@@ -6,13 +6,13 @@ public class player : MonoBehaviour
 {
 
     public float speed = 1.5f;
-    public float jumpHeight = 1f;
+    public float jumpHeight = 100000f;
     [SerializeField] private GameObject PlayerExplosion;
     [SerializeField] private GameObject BulletPrefab = null;
     [SerializeField] private int bullets = 5;
     [SerializeField] private int lives = 3;
-    [SerializeField] Camera Camera2 = null;
-    [SerializeField] Camera MainCamera = null;
+  //  [SerializeField] Camera Camera2 = null;
+   // [SerializeField] Camera MainCamera = null;
     [SerializeField] private AudioSource spikeSoundEffect;
     [SerializeField] private AudioSource shootSoundEffect;
     [SerializeField] private AudioSource bulletPickupSoundEffect;
@@ -96,7 +96,7 @@ public class player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)&&rb.velocity.y==0)
         {
             //Debug.Log("jump1");
-            rb.AddForce(new Vector2(rb.velocity.x, jumpHeight*2));
+            rb.AddForce(new Vector2(rb.velocity.x, 2));
         }
     }
 
