@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] Platforms = null;
-    [SerializeField] private GameObject[] Spikes = null;
+    
     //[SerializeField] private GameObject[] Bullets = null;
     private GameManager GM;
     // Start is called before the first frame update
