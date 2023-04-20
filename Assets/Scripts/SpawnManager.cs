@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] Platforms = null;
     
-    //[SerializeField] private GameObject[] Bullets = null;
+    [SerializeField] private GameObject[] Spikes = null;
     private GameManager GM;
     // Start is called before the first frame update
     void Start()
