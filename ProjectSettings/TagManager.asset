@@ -8,6 +8,7 @@ TagManager:
   - BulletPickUp
   - Wall
   - Bullet
+  - BackgroundSpawnTrigger
   layers:
   - Default
   - TransparentFX
