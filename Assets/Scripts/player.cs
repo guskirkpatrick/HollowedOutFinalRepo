@@ -50,8 +50,6 @@ public class player : MonoBehaviour
         UI.UpdateLives(lives);
         UI.UpdateBullets(bullets);
 
-        //I'm currently working to implement this -Travis
-        //UI.UpdateDepth(depth);
     
         rb = GetComponent<Rigidbody2D>();
 
@@ -169,5 +167,13 @@ public class player : MonoBehaviour
             //the below plays a sound effect when bullet is picked up -Travis
             bulletPickupSoundEffect.Play();
         }
+
+        //I am working on the below to spawn the background when triggered.
+/*
+        if (collision.tag == "BackgroundSpawnTrigger")
+        {
+            
+        }
+*/
     }
 }
