@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] Platforms = null;
+    [SerializeField] private GameObject[] Bullets = null;
 //secretly spawning bullets
     
   
@@ -28,8 +28,9 @@ public class Spawner : MonoBehaviour
     public void StartSpawn()
     {
         StartCoroutine(SpikeSpawnRoutine());
-        StartCoroutine(PlatformSpawnRoutine());
+        StartCoroutine(BulletSpawnRoutine());
     }
+     
     IEnumerator SpikeSpawnRoutine()
     {
         while (!GM.gameOver)
@@ -40,13 +41,13 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    IEnumerator PlatformSpawnRoutine()
+    IEnumerator BulletSpawnRoutine()
     {
          while (!GM.gameOver)
              //find amount of platforms below is not equal to 
          {
              int random = Random.Range(0, 3);
-             Instantiate(Platforms[random], new Vector3(Random.Range(-5.0f, +5.0f), 6.5f, 0), Quaternion.identity);
+             Instantiate(Bullets[random], new Vector3(Random.Range(-5.0f, +5.0f), 6.5f, 0), Quaternion.identity);
              yield return new WaitForSeconds(20.0f);
          }
     }

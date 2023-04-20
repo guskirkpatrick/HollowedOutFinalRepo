@@ -8,7 +8,8 @@ public class player : MonoBehaviour
     public float speed = 1.5f;
     public float jumpHeight = 100000f;
     [SerializeField] private GameObject PlayerExplosion;
-    [SerializeField] private GameObject BulletPrefab = null;
+    [SerializeField] private GameObject playerPrefab;
+    
     [SerializeField] private int bullets = 5;
     [SerializeField] private int lives = 3;
   //  [SerializeField] Camera Camera2 = null;
@@ -26,6 +27,7 @@ public class player : MonoBehaviour
     private GameManager GM;
     private SpawnManager SM;
     private GameObject gun;
+    private gun GS=null;
 
     //illegal rotation stuff
     Vector3 currentEulerAngles;
@@ -46,6 +48,7 @@ public class player : MonoBehaviour
 
 
         gun = GameObject.Find("gun");
+        GS = GameObject.Find("gun").GetComponent<gun>();
         SM.StartSpawn();
         UI.UpdateLives(lives);
         UI.UpdateBullets(bullets);
@@ -110,6 +113,8 @@ public class player : MonoBehaviour
             bullets--;
             UI.UpdateBullets(bullets);
             rb.AddForce(gun.transform.right * -1f * 630);
+            if(GS!=null)
+            GS.Shoot();
 
 
             //the below plays a sound when the gun is fired -Travis
@@ -131,7 +136,8 @@ public class player : MonoBehaviour
         bullets = 5;
         UI.UpdateBullets(bullets);
         lives = 3;
-        UI.UpdateLives(lives);  
+        UI.UpdateLives(lives);
+        GM.paused = false;
         //add more stuff
 
     }
@@ -142,7 +148,7 @@ public class player : MonoBehaviour
         if (collision.tag == "spike")
         {
             //bounce
-            rb.AddForce(new Vector2(rb.velocity.x, jumpHeight*0.1f));
+            rb.AddForce(new Vector2(rb.velocity.x, jumpHeight*1f));
 
 
 
@@ -156,9 +162,13 @@ public class player : MonoBehaviour
             if (lives <= 0)
             {
              //  Camera2.enabled = true;
+                
+                //  playerPrefab.SpriteRenderer
+              //  GameObject.Find("player").GetComponent<SpriteRenderer>().SetActive(false); 
+                GM.paused = true;
                 GM.gameOver = true;
-                Destroy(this.gameObject);
-                Application.Quit();
+
+                ///Application.Quit();
             }
         }
 

@@ -12,7 +12,8 @@ public class FireableBullet : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.right * speed; // set initial velocity to the bullet's right direction multiplied by speed
+        rb.velocity = rb.transform.rotation * Vector2.right * speed;
+       // rb.velocity = transform.right * speed; // set initial velocity to the bullet's right direction multiplied by speed
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
