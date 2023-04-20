@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
     public void HideTitle()
     {
         TitleScreen.SetActive(false);
-        UpdateLives(5);
+        UpdateLives(3);
 
     }
     public void ShowTitle()

@@ -22,7 +22,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1188177983668757079
 Transform:
   m_ObjectHideFlags: 0
@@ -108,7 +108,6 @@ MonoBehaviour:
   jumpHeight: 2
   PlayerExplosion: {fileID: 0}
   playerPrefab: {fileID: 1188177983668757074}
-  BulletPrefab: {fileID: 0}
   bullets: 5
   lives: 5
   spikeSoundEffect: {fileID: 2256165931934755907}
@@ -546,6 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b1c553cc689f448a93c6cb59f7ffaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 0}
 --- !u!1 &2256165931703784121
 GameObject:
   m_ObjectHideFlags: 0

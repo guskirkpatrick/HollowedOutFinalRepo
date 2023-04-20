@@ -165,7 +165,7 @@ public class player : MonoBehaviour
                 
                 //  playerPrefab.SpriteRenderer
               //  GameObject.Find("player").GetComponent<SpriteRenderer>().SetActive(false); 
-                GM.paused = true;
+               // GM.paused = true;
                 GM.gameOver = true;
 
                 ///Application.Quit();

@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
         
         if (gameOver)
         {
+            paused = true; Player.SetActive(false);
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 
