@@ -5,8 +5,13 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] Platforms = null;
+<<<<<<< HEAD
     
     [SerializeField] private GameObject[] Spikes = null;
+=======
+    [SerializeField] private GameObject[] Spikes = null;
+    //[SerializeField] private GameObject[] Bullets = null;
+>>>>>>> parent of ead4e6f (WallBaseStuff)
     private GameManager GM;
     // Start is called before the first frame update
     void Start()
