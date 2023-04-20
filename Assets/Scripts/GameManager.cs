@@ -24,30 +24,35 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (paused)
         {
-            if (paused)
+            //resume
+            Time.timeScale = 1;  //100% of fps
+
+        }
+        else if (!paused) {
+            Time.timeScale = 0; //0fps
+        }
+
+            if (Input.GetKeyDown(KeyCode.P))
             {
-                //resume
-                Time.timeScale = 1;  //100% of fps
+          
                 paused = false;
                // PauseText.SetActive(false);
             }
             else
             {
                 //pause
-                Time.timeScale = 0; //0fps
+                
                 paused = true;
               //  PauseText.SetActive(true);
             }
-        }
+        
         if (gameOver)
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
-                Instantiate(Player, new Vector3(0, 0, 0), Quaternion.identity);
-             //  Player.transform
-                //add player 
+                
                 gameOver = false;
                 UI.HideTitle();
             }

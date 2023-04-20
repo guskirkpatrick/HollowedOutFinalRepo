@@ -9,6 +9,8 @@ public class gun : MonoBehaviour
     Vector3 currentEulerAngles;
     Quaternion rotation;
 
+    [SerializeField] private GameObject BulletPrefab = null;
+
     void Start()
     {
         
@@ -21,12 +23,15 @@ public class gun : MonoBehaviour
       //  Flip();
     }
    
-
-    void Shoot()
+    //instantiate bullet prefab relative to ransform rotation of gun
+    public void Shoot()
     {
+        Quaternion adjustedRotation = rotation * Quaternion.Euler(0, 0, -90);
+        Instantiate(BulletPrefab, transform.position + transform.right, adjustedRotation);
 
     }
 
+    //rotates the parent gun object to players cursor
     void Rotate()
     {
         Vector2 Dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
