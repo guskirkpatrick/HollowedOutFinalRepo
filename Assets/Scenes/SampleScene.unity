@@ -751,6 +751,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1188177983668757074, guid: 6f22935fff97a594e8e75f98383345bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1188177983668757077, guid: 6f22935fff97a594e8e75f98383345bd, type: 3}
       propertyPath: BulletPrefab
       value: 
