@@ -5,7 +5,8 @@ using UnityEngine;
 public class Background : MonoBehaviour
 {
 
-    
+    //[SerializeField] private GameObject Wall;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class Background : MonoBehaviour
         if(other.tag == "Player")
         {
             Debug.Log("Sucess");
+            instantiate(Wall,Vector3,Quaternion.identity,Transform);
         }
     }
     */
