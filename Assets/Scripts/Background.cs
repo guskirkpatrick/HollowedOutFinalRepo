@@ -5,7 +5,7 @@ using UnityEngine;
 public class Background : MonoBehaviour
 {
 
-    //[SerializeField] private GameObject Wall;
+   // [SerializeField] private GameObject Wall;
 
     // Start is called before the first frame update
     void Start()
@@ -19,14 +19,14 @@ public class Background : MonoBehaviour
        
     }
 
-    /* I am working on the below section -Travis 
+    // I am working on the below section -Travis 
+    /*
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")
         {
-            Debug.Log("Sucess");
-            instantiate(Wall,Vector3,Quaternion.identity,Transform);
+            Instantiate(Wall,new Vector3(0,-60,0), Quaternion.identity);
         }
-    }
-    */
+    }*/
+    
 }
