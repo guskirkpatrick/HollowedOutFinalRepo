@@ -6,8 +6,7 @@ public class Background : MonoBehaviour
 {
 
      [SerializeField] private GameObject Wall;
-    private int x = 0;
-    private bool triggerCheck = false;
+     [SerializeField] private int x = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +18,12 @@ public class Background : MonoBehaviour
        
     }
 
-    // I am working on the below section -Travis 
+    //Spawns a new background object when the player hits the trigger 
     private void OnTriggerExit2D(Collider2D other)
     {
-            if (other.tag == "Player")
+        if (other.tag == "Player")
             {
-                x += 1;
+                x++;
                 Instantiate(Wall, new Vector3(0, x * -120, 0), Quaternion.Euler(0, 0, 90));
             }
     }
