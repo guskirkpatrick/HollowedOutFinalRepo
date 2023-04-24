@@ -35,6 +35,12 @@ public class UIManager : MonoBehaviour
     {
         TitleScreen.SetActive(true);
     }
+    public void SetGameOver(bool bo)
+    {
+        GameOverDisplay.SetActive(bo);
+
+
+    }
     public void UpdateLives(int currentLives)
     {
         LifeDisplay.text = "Lives: " + currentLives;

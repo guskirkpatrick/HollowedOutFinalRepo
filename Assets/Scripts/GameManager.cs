@@ -45,13 +45,15 @@ public class GameManager : MonoBehaviour
         
         if (gameOver==true)
         {
+            UI.SetGameOver(true);
             paused = true;
-           // Player.SetActive(false);
+        //add a pp effect
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 
                 gameOver = false;
-                UI.GameOverDisplay.SetActive(false);
+
+                UI.SetGameOver(false);
                 //UI.HideTitle();
             }
         }
