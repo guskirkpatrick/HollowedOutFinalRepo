@@ -19,7 +19,7 @@ public class gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Rotate();
+        //Rotate();
       //  Flip();
     }
    
