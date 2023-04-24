@@ -6,16 +6,26 @@ public class EyeMover : MonoBehaviour
 {
     Vector3 currentEulerAngles;
     Quaternion rotation;
+    [SerializeField] private GameObject eye;
+    bool alive = true;
+    private GameManager GM;
     // Start is called before the first frame update
     void Start()
     {
-        
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Rotate();
+        
+            //eye.SetActive(!GM.gameOver);
+           
+        
+       
+           // eye.SetActive(true);
+           
         
         //  Flip();
     }
@@ -27,4 +37,5 @@ public class EyeMover : MonoBehaviour
         rotation = Quaternion.AngleAxis(Angle, Vector3.forward);
         transform.rotation = rotation;
     }
+    
 }

@@ -40,8 +40,6 @@ public class player : MonoBehaviour
     void Start()
     {
 
-       // Camera2.enabled = false;
-       // MainCamera.enabled = true;
         UI = GameObject.Find("Canvas").GetComponent<UIManager>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         SM = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
@@ -81,14 +79,6 @@ public class player : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * speed * horizontalInput * Time.deltaTime);//float
 
-
-        // float verticalInput = Input.GetAxis("Vertical");
-        //  transform.Translate(Vector3.up * speed * verticalInput * Time.deltaTime);
-
-        //check velocity
-     //   if (rb.velocity > 200f)
-        //    rb.velocity = 199f;
-
     }
 
     void jump()
@@ -97,7 +87,7 @@ public class player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)&&rb.velocity.y==0)
         {
             //Debug.Log("jump1");
-            rb.AddForce(new Vector2(rb.velocity.x, 2));
+            rb.AddForce(new Vector2(rb.velocity.x, 10));
         }
     }
 
