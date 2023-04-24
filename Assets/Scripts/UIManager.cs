@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; //import for UI/Image
@@ -9,7 +9,8 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private Text LifeDisplay;
     [SerializeField] private Text BulletDisplay;
-   
+    [SerializeField] public GameObject GameOverDisplay;
+
 
     [SerializeField] private GameObject TitleScreen;
 
@@ -42,5 +43,6 @@ public class UIManager : MonoBehaviour
     {
         BulletDisplay.text = "Bullets: " + bullets;
     }
+
 
 }

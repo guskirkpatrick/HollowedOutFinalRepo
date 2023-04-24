@@ -6,7 +6,7 @@ public class player : MonoBehaviour
 {
 
     public float speed = 1.5f;
-    public float jumpHeight = 100000f;
+    public float jumpHeight = 10f;
     [SerializeField] private GameObject PlayerExplosion;
     [SerializeField] private GameObject playerPrefab;
     
@@ -142,12 +142,20 @@ public class player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("collision");
+       // Debug.Log("collision");
         if (collision.tag == "spike")
         {
             //bounce
-            rb.AddForce(new Vector2(rb.velocity.x, jumpHeight*1f));
+             rb.AddForce(new Vector2(rb.velocity.y, jumpHeight*100f));
+            /*Vector2 direction = Vector2.zero;
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                direction += contact.normal;
+            }
 
+            // Normalize the direction and apply the bounce force
+            direction.Normalize();
+            rb.AddForce(direction * bounceForce, ForceMode2D.Impulse);*/
 
 
             //start co-routine immunity

@@ -11,8 +11,7 @@ public class GameManager : MonoBehaviour
     private UIManager UI;
     public bool paused = false;
     [SerializeField] private GameObject Player;
-
-  //  [SerializeField] private GameObject PauseText;
+ 
 
     void Start()
     {
@@ -24,38 +23,36 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (paused)
+        if (!paused)
         {
             //resume
             Time.timeScale = 1;  //100% of fps
 
         }
-        else if (!paused) {
+        else if (paused) {
             Time.timeScale = 0; //0fps
         }
 
             if (Input.GetKeyDown(KeyCode.P))
             {
-          
+
+            if (paused)
                 paused = false;
-               // PauseText.SetActive(false);
-            }
             else
-            {
-                //pause
-                
                 paused = true;
-              //  PauseText.SetActive(true);
+           
             }
         
-        if (gameOver)
+        if (gameOver==true)
         {
-            paused = true; Player.SetActive(false);
+            paused = true;
+           // Player.SetActive(false);
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 
                 gameOver = false;
-                UI.HideTitle();
+                UI.GameOverDisplay.SetActive(false);
+                //UI.HideTitle();
             }
         }
     }
