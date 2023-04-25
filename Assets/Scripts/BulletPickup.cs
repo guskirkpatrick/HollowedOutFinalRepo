@@ -20,8 +20,9 @@ public class BulletPickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (GM.gameOver)
+
+        if (GM.gameOver || Input.GetKeyDown(KeyCode.Tab))
+
             Destroy(gameObject);
         jiggle();
     }

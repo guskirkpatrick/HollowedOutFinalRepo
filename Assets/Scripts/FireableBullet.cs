@@ -21,12 +21,15 @@ public class FireableBullet : MonoBehaviour
     {
         // destroy the bullet when it hits something
         Destroy(gameObject);
+
     }
     
     private void Update()
     {
-        if (GM.gameOver)
+        if (GM.gameOver|| Input.GetKeyDown(KeyCode.Tab))
+
             Destroy(gameObject);
+       
     }
 
 }
