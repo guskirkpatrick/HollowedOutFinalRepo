@@ -116,7 +116,7 @@ public class player : MonoBehaviour
     void reset()
     {
        
-        transform.position = new Vector2(0, 2);
+        transform.position = new Vector2(0, 0);
         bullets = 5;
         UI.UpdateBullets(bullets);
         lives = 3;
