@@ -122,6 +122,11 @@ public class player : MonoBehaviour
         lives = 3;
         UI.UpdateLives(lives);
         GM.paused = false;
+        Time.timeScale = 1;
+        //toggled part
+       GM.gameOver = false;
+
+        UI.SetGameOver(false);
         //add more stuff
 
     }

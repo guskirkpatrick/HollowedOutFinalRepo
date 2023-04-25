@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     public bool gameOver = false;
     //static?
     private UIManager UI;
- 
+    private player PL;
+
     public bool paused = false;
     [SerializeField] private GameObject Player;
  
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
        // if(EyeBalls== null)
        // EyeBalls = GameObject.Find("player").GetComponent<EyePupilL>();
         UI = GameObject.Find("Canvas").GetComponent<UIManager>();
+        PL = Player.GetComponent<player>();
         //Player = GameObject.Find("player");
     }
 
@@ -53,14 +55,7 @@ public class GameManager : MonoBehaviour
 
             paused = true;
         //add a pp effect
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                
-                gameOver = false;
-
-                UI.SetGameOver(false);
-                //UI.HideTitle();
-            }
+           
         }
     }
 }
