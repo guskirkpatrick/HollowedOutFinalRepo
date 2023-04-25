@@ -32,13 +32,13 @@ public class gun : MonoBehaviour
     }
 
     //rotates the parent gun object to players cursor
-    void Rotate()
+   /* void Rotate()
     {
         Vector2 Dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float Angle =Mathf.Atan2(Dir.y, Dir.x) * Mathf.Rad2Deg;
     rotation = Quaternion.AngleAxis(Angle, Vector3.forward);
         transform.rotation = rotation;
-    }
+    }*/
 
    /* protected void Flip()
     {

@@ -16,6 +16,9 @@ public class arm : MonoBehaviour
     void Update()
     {
         Rotate();
+       // if (transform.rotation >= 90.0)
+            //SpriteRenderer.flipX(true);
+
     }
 
     void Rotate()

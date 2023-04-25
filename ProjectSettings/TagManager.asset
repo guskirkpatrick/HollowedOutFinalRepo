@@ -61,6 +61,9 @@ TagManager:
   - name: eyes?
     uniqueID: 3279423069
     locked: 0
+  - name: eyes2
+    uniqueID: 1366431291
+    locked: 0
   - name: arm
     uniqueID: 937168817
     locked: 0

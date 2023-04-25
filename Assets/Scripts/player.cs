@@ -12,8 +12,9 @@ public class player : MonoBehaviour
     
     [SerializeField] private int bullets = 5;
     [SerializeField] private int lives = 3;
+   
   //  [SerializeField] Camera Camera2 = null;
-   // [SerializeField] Camera MainCamera = null;
+  // [SerializeField] Camera MainCamera = null;
     [SerializeField] private AudioSource spikeSoundEffect;
     [SerializeField] private AudioSource shootSoundEffect;
     [SerializeField] private AudioSource bulletPickupSoundEffect;
@@ -108,12 +109,7 @@ public class player : MonoBehaviour
             //the below plays a sound when the gun is fired -Travis
             shootSoundEffect.Play();
 
-            //rotation stuff
-            // Vector2 Dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            //  float Angle = Mathf.Atan2(Dir.y, Dir.x) * Mathf.Rad2Deg;
-            //  rotation = Quaternion.AngleAxis(Angle, Vector3.forward);
-
-            //  transform.rotation = rotation;
+          
         }
     }
 
@@ -136,18 +132,11 @@ public class player : MonoBehaviour
         if (collision.tag == "spike")
         {
             //bounce
-             rb.AddForce(new Vector2(rb.velocity.y, jumpHeight*100f));
-            /*Vector2 direction = Vector2.zero;
-            foreach (ContactPoint2D contact in collision.contacts)
-            {
-                direction += contact.normal;
-            }
-
-            // Normalize the direction and apply the bounce force
-            direction.Normalize();
-            rb.AddForce(direction * bounceForce, ForceMode2D.Impulse);*/
-
-
+            if(rb.velocity.y>12.0)
+                rb.AddForce(new Vector2(rb.velocity.y, jumpHeight * 150f));
+            else
+            rb.AddForce(new Vector2(rb.velocity.y, jumpHeight*100f));
+           
             //start co-routine immunity
 
             lives--;

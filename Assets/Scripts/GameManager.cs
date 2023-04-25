@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
 
     public bool gameOver = false;
+    //static?
     private UIManager UI;
  
     public bool paused = false;
