@@ -12,9 +12,7 @@ public class player : MonoBehaviour
     
     [SerializeField] private int bullets = 5;
     [SerializeField] private int lives = 3;
-   
-  //  [SerializeField] Camera Camera2 = null;
-  // [SerializeField] Camera MainCamera = null;
+  
     [SerializeField] private AudioSource spikeSoundEffect;
     [SerializeField] private AudioSource shootSoundEffect;
     [SerializeField] private AudioSource bulletPickupSoundEffect;
@@ -33,9 +31,7 @@ public class player : MonoBehaviour
     //illegal rotation stuff
     Vector3 currentEulerAngles;
     Quaternion rotation;
-    /// <summary>
-    /// /////////////////
-    /// </summary>
+
 
 
     void Start()
