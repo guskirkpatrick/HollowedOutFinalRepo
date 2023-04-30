@@ -163,7 +163,7 @@ public class player : MonoBehaviour
 
         if (collision.tag == "BulletPickUp")
         {
-            bullets++;
+            bullets+=2;
             UI.UpdateBullets(bullets);
             //the below plays a sound effect when bullet is picked up -Travis
             bulletPickupSoundEffect.Play();

@@ -51,7 +51,7 @@ public class gun : MonoBehaviour
     {
         GameObject b = Instantiate(bulletPrefab) as GameObject;
         b.transform.position = bulletStart.transform.position;
-        b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
+        b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ-90.0f);
         b.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         // Quaternion adjustedRotation = rotation * Quaternion.Euler(0, 0, -90);
         // Instantiate(BulletPrefab, spawnPoint.position, Quaternion.identity).Init(transform.up);
