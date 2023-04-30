@@ -6,18 +6,13 @@ public class arm : MonoBehaviour
 {
     Vector3 currentEulerAngles;
     Quaternion rotation;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   
 
     // Update is called once per frame
     void Update()
     {
         Rotate();
-       // if (transform.rotation >= 90.0)
-            //SpriteRenderer.flipX(true);
+   
 
     }
 

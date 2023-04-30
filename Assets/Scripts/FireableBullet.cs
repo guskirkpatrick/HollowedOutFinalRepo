@@ -8,19 +8,22 @@ public class FireableBullet : MonoBehaviour
     public float speed = 50f; // adjust this to control the bullet's speed
     private GameManager GM;
     private Rigidbody2D rb;
-   
+    private player PL;
+    private UIManager UI;
 
     private void Start()
     {
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         rb = GetComponent<Rigidbody2D>();
-      //  rb.velocity = rb.transform.rotation * Vector2.right * speed;
-       // rb.velocity = transform.right * speed; // set initial velocity to the bullet's right direction multiplied by speed
+        PL = GameObject.Find("player").GetComponent<player>();
+        UI = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // destroy the bullet when it hits something
+        if (collision.tag == "enemy")
+            PL.addScore(5);
         Destroy(gameObject);
 
     }

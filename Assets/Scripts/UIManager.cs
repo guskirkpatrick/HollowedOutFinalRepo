@@ -10,11 +10,9 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private Text LifeDisplay;
     [SerializeField] private Text BulletDisplay;
+    [SerializeField] private Text ScoreDisplay;
     [SerializeField] public GameObject GameOverDisplay;
    
-
-
-
     [SerializeField] private GameObject TitleScreen;
     [SerializeField] private GameObject PauseMenu;
     private player PL;
@@ -27,11 +25,7 @@ public class UIManager : MonoBehaviour
         PL = GameObject.Find("player").GetComponent<player>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+   
     public void HideTitle()
     {
         TitleScreen.SetActive(false);
@@ -45,39 +39,11 @@ public class UIManager : MonoBehaviour
     public void SetGameOver(bool bo)
     {
         GameOverDisplay.SetActive(bo);
-
-
     }
-    /*
-     * 
-     * pause menu assets
-    public void resume()
-    {
-        GM.paused = false;
-    }
-    public void restart()
-    {
-        PL.reset();
-    }
-
-    public void MainMenu()
-    {
-        SceneManager.LoadScene(0);
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
-    
-     
-     */
-
+   
     public void SetPauseMenu(bool bo)
     {
         PauseMenu.SetActive(bo);
-
-
     }
     public void UpdateLives(int currentLives)
     {
@@ -86,6 +52,10 @@ public class UIManager : MonoBehaviour
     public void UpdateBullets(int bullets)
     {
         BulletDisplay.text = "Bullets: " + bullets;
+    }
+    public void UpdateScore(int score)
+    {
+        ScoreDisplay.text = "Score: " + score;
     }
 
 

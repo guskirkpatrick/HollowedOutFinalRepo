@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] Bullets = null;
-//secretly spawning bullets
-    
-  
+   /* [SerializeField] private GameObject[] Bullets = null;
+    //secretly spawning bullets
+
+
     [SerializeField] private GameObject[] Spikes = null;
-   
+
 
     private GameManager GM;
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void StartSpawn()
@@ -30,7 +30,7 @@ public class Spawner : MonoBehaviour
         StartCoroutine(SpikeSpawnRoutine());
         StartCoroutine(BulletSpawnRoutine());
     }
-     
+
     IEnumerator SpikeSpawnRoutine()
     {
         while (!GM.gameOver)
@@ -43,12 +43,12 @@ public class Spawner : MonoBehaviour
 
     IEnumerator BulletSpawnRoutine()
     {
-         while (!GM.gameOver)
-             //find amount of platforms below is not equal to 
-         {
-             int random = Random.Range(0, 3);
-             Instantiate(Bullets[random], new Vector3(Random.Range(-5.0f, +5.0f), 6.5f, 0), Quaternion.identity);
-             yield return new WaitForSeconds(20.0f);
-         }
-    }
+        while (!GM.gameOver)
+        //find amount of platforms below is not equal to 
+        {
+            int random = Random.Range(0, 3);
+            Instantiate(Bullets[random], new Vector3(Random.Range(-5.0f, +5.0f), 6.5f, 0), Quaternion.identity);
+            yield return new WaitForSeconds(20.0f);
+        }
+    }*/
 }

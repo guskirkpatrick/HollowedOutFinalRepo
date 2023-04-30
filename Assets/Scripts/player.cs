@@ -8,30 +8,30 @@ public class player : MonoBehaviour
 
     public float speed = 1.5f;
     public float jumpHeight = 10f;
-    [SerializeField] private GameObject PlayerExplosion;
+  
     [SerializeField] private GameObject playerPrefab;
     
     [SerializeField] public int bullets = 5;
     [SerializeField] private int lives = 3;
-  
+    [SerializeField] private int permaScore=0;
+    [SerializeField] private int tempScore = 0;
+
     [SerializeField] private AudioSource spikeSoundEffect;
     [SerializeField] private AudioSource shootSoundEffect;
     [SerializeField] private AudioSource bulletPickupSoundEffect;
 
 
+    //script accesors
     private Rigidbody2D rb;
-
-
-
     private UIManager UI;
     private GameManager GM;
     private SpawnManager SM;
     private GameObject gun;
+    private StarterBackGround SBG;
     private gun GS=null;
+    private float startY;
 
-    //illegal rotation stuff
-    Vector3 currentEulerAngles;
-    Quaternion rotation;
+  
 
 
 
@@ -41,32 +41,34 @@ public class player : MonoBehaviour
         UI = GameObject.Find("Canvas").GetComponent<UIManager>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         SM = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
-
-
+        startY=transform.position.y;
+        SBG = GameObject.Find("StarterWall").GetComponent<StarterBackGround>();
         gun = GameObject.Find("gun");
         GS = GameObject.Find("gun").GetComponent<gun>();
         SM.StartSpawn();
+        UI.UpdateScore(0);
         UI.UpdateLives(lives);
         UI.UpdateBullets(bullets);
 
     
         rb = GetComponent<Rigidbody2D>();
 
-        //float speed = rb.velocity.magnitude();
     }
 
     // Update is called once per frame
     void Update()
     {
         move();
-
-
         jump();
         shoot();
         if (Input.GetKeyDown(KeyCode.Tab))
             {
             reset();
         }
+        //needs work
+        
+            //addScore(5);
+
     }
 
     void move()
@@ -111,13 +113,32 @@ public class player : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void addScore(int sco)
+    {
+        tempScore += sco;
+        UI.UpdateScore(tempScore+permaScore);
+    }
+    public void CalculatePermaScore()
+    {
+        if(transform.position.y<permaScore)
+            //cast to int
+        {
+            permaScore = (int) -transform.position.y;
+        }
+        UI.UpdateScore(tempScore + permaScore);
+    }
    public void reset()
     {
        
         transform.position = new Vector2(0, 0);
         bullets = 5;
+        permaScore = 0;
+        tempScore= 0;
+        UI.UpdateScore(0);
         UI.UpdateBullets(bullets);
         lives = 3;
+        SBG.x = 0; 
         UI.UpdateLives(lives);
         GM.paused = false;
         Time.timeScale = 1;
@@ -125,8 +146,7 @@ public class player : MonoBehaviour
        GM.gameOver = false;
 
         UI.SetGameOver(false);
-        //add more stuff
-
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -139,9 +159,6 @@ public class player : MonoBehaviour
                 rb.AddForce(new Vector2(rb.velocity.y, jumpHeight * 150f));
             else
             rb.AddForce(new Vector2(rb.velocity.y, jumpHeight*100f));
-           
-            //start co-routine immunity
-
             lives--;
             UI.UpdateLives(lives);
             //The below plays a sound when player hits spikes -Travis
@@ -149,14 +166,8 @@ public class player : MonoBehaviour
 
             if (lives <= 0)
             {
-             //  Camera2.enabled = true;
-                
-                //  playerPrefab.SpriteRenderer
-              //  GameObject.Find("player").GetComponent<SpriteRenderer>().SetActive(false); 
-               // GM.paused = true;
+             
                 GM.gameOver = true;
-
-                ///Application.Quit();
             }
         }
 
@@ -168,12 +179,7 @@ public class player : MonoBehaviour
             bulletPickupSoundEffect.Play();
         }
 
-        //I am working on the below to spawn the background when triggered.
-/*
-        if (collision.tag == "BackgroundSpawnTrigger")
-        {
-            
-        }
-*/
+        
+
     }
 }

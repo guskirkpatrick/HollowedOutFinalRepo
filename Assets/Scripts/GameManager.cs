@@ -35,9 +35,10 @@ public class GameManager : MonoBehaviour
         {
             UI.SetGameOver(true);
 
-            paused = true;
-        //add a pp effect
-           
+            //paused = true;
+            Time.timeScale = 1;
+            //add a pp effect
+
         }
     }
 
