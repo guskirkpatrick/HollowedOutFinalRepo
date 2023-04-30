@@ -84,7 +84,7 @@ public class player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space)&&rb.velocity.y==0)
         {
-            //Debug.Log("jump1");
+        
             rb.AddForce(new Vector2(rb.velocity.x, 10));
         }
     }
@@ -98,8 +98,7 @@ public class player : MonoBehaviour
             bullets--;
             UI.UpdateBullets(bullets);
             rb.AddForce(gun.transform.right * -1f * 630);
-          //  if(GS!=null)
-           // GS.Shoot();
+          //bullet shoot is now calculated seperately in the gun script
 
 
             //the below plays a sound when the gun is fired -Travis

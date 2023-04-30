@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0; //0fps
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P)|| Input.GetKeyDown(KeyCode.Escape))
         {
 
             if (paused)
