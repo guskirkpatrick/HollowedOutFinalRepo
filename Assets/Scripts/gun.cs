@@ -10,10 +10,10 @@ public class gun : MonoBehaviour
     Quaternion rotation;
 
     [SerializeField] private GameObject BulletPrefab = null;
+   
 
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -21,15 +21,19 @@ public class gun : MonoBehaviour
     {
         //Rotate();
       //  Flip();
+      
     }
    
     //instantiate bullet prefab relative to ransform rotation of gun
     public void Shoot()
     {
+       
         Quaternion adjustedRotation = rotation * Quaternion.Euler(0, 0, -90);
         Instantiate(BulletPrefab, transform.position + transform.right, adjustedRotation);
 
     }
+
+    
 
     //rotates the parent gun object to players cursor
    /* void Rotate()

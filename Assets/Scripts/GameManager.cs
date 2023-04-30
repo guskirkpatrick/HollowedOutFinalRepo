@@ -29,26 +29,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!paused)
-        {
-            //resume
-            Time.timeScale = 1;  //100% of fps
-
-        }
-        else if (paused) {
-            Time.timeScale = 0; //0fps
-        }
-
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-
-            if (paused)
-                paused = false;
-            else
-                paused = true;
-           
-            }
         
+        PauseCheck();
         if (gameOver==true)
         {
             UI.SetGameOver(true);
@@ -56,6 +38,32 @@ public class GameManager : MonoBehaviour
             paused = true;
         //add a pp effect
            
+        }
+    }
+
+    void PauseCheck()
+    {
+        if (!paused)
+        {
+            //resume
+            Time.timeScale = 1;  //100% of fps
+            UI.SetPauseMenu(false);
+
+        }
+        else if (paused)
+        {
+            UI.SetPauseMenu(true);
+            Time.timeScale = 0; //0fps
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+
+            if (paused)
+                paused = false;
+            else
+                paused = true;
+
         }
     }
 }

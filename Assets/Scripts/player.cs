@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player : MonoBehaviour
 {
@@ -91,7 +92,7 @@ public class player : MonoBehaviour
     void shoot()
     {
 
-        if (Input.GetKeyDown(KeyCode.Mouse0 )&&bullets>0)
+        if (Input.GetKeyDown(KeyCode.Mouse0 )&&bullets>0&&!GM.paused)
         {
             //Debug.Log("shoot");
            // rb.AddForce(new Vector2(rb.velocity.x, jumpHeight * 160));
@@ -108,8 +109,11 @@ public class player : MonoBehaviour
           
         }
     }
-
-    void reset()
+    void toMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+   public void reset()
     {
        
         transform.position = new Vector2(0, 0);
