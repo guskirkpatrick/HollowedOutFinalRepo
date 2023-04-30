@@ -11,14 +11,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text LifeDisplay;
     [SerializeField] private Text BulletDisplay;
     [SerializeField] public GameObject GameOverDisplay;
-    private GameManager GM;
+   
 
 
 
     [SerializeField] private GameObject TitleScreen;
     [SerializeField] private GameObject PauseMenu;
     private player PL;
-   // [SerializeField] private GameObject Player;
+    private GameManager GM;
+    // [SerializeField] private GameObject Player;
 
     void Start()
     {
@@ -49,7 +50,7 @@ public class UIManager : MonoBehaviour
     }
     /*
      * 
-     * pause menu assets*/
+     * pause menu assets
     public void resume()
     {
         GM.paused = false;
@@ -68,7 +69,7 @@ public class UIManager : MonoBehaviour
     {
         Application.Quit();
     }
-    /*
+    
      
      */
 
