@@ -11,7 +11,7 @@ public class player : MonoBehaviour
     [SerializeField] private GameObject PlayerExplosion;
     [SerializeField] private GameObject playerPrefab;
     
-    [SerializeField] private int bullets = 5;
+    [SerializeField] public int bullets = 5;
     [SerializeField] private int lives = 3;
   
     [SerializeField] private AudioSource spikeSoundEffect;
@@ -94,13 +94,12 @@ public class player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0 )&&bullets>0&&!GM.paused)
         {
-            //Debug.Log("shoot");
-           // rb.AddForce(new Vector2(rb.velocity.x, jumpHeight * 160));
+ 
             bullets--;
             UI.UpdateBullets(bullets);
             rb.AddForce(gun.transform.right * -1f * 630);
-            if(GS!=null)
-            GS.Shoot();
+          //  if(GS!=null)
+           // GS.Shoot();
 
 
             //the below plays a sound when the gun is fired -Travis
