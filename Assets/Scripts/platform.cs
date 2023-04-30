@@ -16,7 +16,8 @@ public class platform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GM.gameOver)
+        if (GM.gameOver || Input.GetKeyDown(KeyCode.Tab))
+
             Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)

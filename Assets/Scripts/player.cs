@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player : MonoBehaviour
 {
@@ -10,11 +11,9 @@ public class player : MonoBehaviour
     [SerializeField] private GameObject PlayerExplosion;
     [SerializeField] private GameObject playerPrefab;
     
-    [SerializeField] private int bullets = 5;
+    [SerializeField] public int bullets = 5;
     [SerializeField] private int lives = 3;
-   
-  //  [SerializeField] Camera Camera2 = null;
-  // [SerializeField] Camera MainCamera = null;
+  
     [SerializeField] private AudioSource spikeSoundEffect;
     [SerializeField] private AudioSource shootSoundEffect;
     [SerializeField] private AudioSource bulletPickupSoundEffect;
@@ -33,9 +32,7 @@ public class player : MonoBehaviour
     //illegal rotation stuff
     Vector3 currentEulerAngles;
     Quaternion rotation;
-    /// <summary>
-    /// /////////////////
-    /// </summary>
+
 
 
     void Start()
@@ -87,7 +84,7 @@ public class player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space)&&rb.velocity.y==0)
         {
-            //Debug.Log("jump1");
+        
             rb.AddForce(new Vector2(rb.velocity.x, 10));
         }
     }
@@ -95,15 +92,13 @@ public class player : MonoBehaviour
     void shoot()
     {
 
-        if (Input.GetKeyDown(KeyCode.Mouse0 )&&bullets>0)
+        if (Input.GetKeyDown(KeyCode.Mouse0 )&&bullets>0&&!GM.paused)
         {
-            //Debug.Log("shoot");
-           // rb.AddForce(new Vector2(rb.velocity.x, jumpHeight * 160));
+ 
             bullets--;
             UI.UpdateBullets(bullets);
             rb.AddForce(gun.transform.right * -1f * 630);
-            if(GS!=null)
-            GS.Shoot();
+          //bullet shoot is now calculated seperately in the gun script
 
 
             //the below plays a sound when the gun is fired -Travis
@@ -112,16 +107,24 @@ public class player : MonoBehaviour
           
         }
     }
-
-    void reset()
+    void toMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+   public void reset()
     {
        
-        transform.position = new Vector2(0, 2);
+        transform.position = new Vector2(0, 0);
         bullets = 5;
         UI.UpdateBullets(bullets);
         lives = 3;
         UI.UpdateLives(lives);
         GM.paused = false;
+        Time.timeScale = 1;
+        //toggled part
+       GM.gameOver = false;
+
+        UI.SetGameOver(false);
         //add more stuff
 
     }
@@ -159,7 +162,7 @@ public class player : MonoBehaviour
 
         if (collision.tag == "BulletPickUp")
         {
-            bullets++;
+            bullets+=2;
             UI.UpdateBullets(bullets);
             //the below plays a sound effect when bullet is picked up -Travis
             bulletPickupSoundEffect.Play();

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2698785106053248742}
   - component: {fileID: 1279403534765914178}
   - component: {fileID: 1049804115042475222}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: FireableBullet 1
   m_TagString: Bullet
   m_Icon: {fileID: 0}

@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     public bool gameOver = false;
     //static?
     private UIManager UI;
- 
+    private player PL;
+
     public bool paused = false;
     [SerializeField] private GameObject Player;
  
@@ -21,46 +22,48 @@ public class GameManager : MonoBehaviour
        // if(EyeBalls== null)
        // EyeBalls = GameObject.Find("player").GetComponent<EyePupilL>();
         UI = GameObject.Find("Canvas").GetComponent<UIManager>();
+        PL = Player.GetComponent<player>();
         //Player = GameObject.Find("player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!paused)
-        {
-            //resume
-            Time.timeScale = 1;  //100% of fps
-
-        }
-        else if (paused) {
-            Time.timeScale = 0; //0fps
-        }
-
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-
-            if (paused)
-                paused = false;
-            else
-                paused = true;
-           
-            }
         
+        PauseCheck();
         if (gameOver==true)
         {
             UI.SetGameOver(true);
 
             paused = true;
         //add a pp effect
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                
-                gameOver = false;
+           
+        }
+    }
 
-                UI.SetGameOver(false);
-                //UI.HideTitle();
-            }
+    void PauseCheck()
+    {
+        if (!paused)
+        {
+            //resume
+            Time.timeScale = 1;  //100% of fps
+            UI.SetPauseMenu(false);
+
+        }
+        else if (paused)
+        {
+            UI.SetPauseMenu(true);
+            Time.timeScale = 0; //0fps
+        }
+
+        if (Input.GetKeyDown(KeyCode.P)|| Input.GetKeyDown(KeyCode.Escape))
+        {
+
+            if (paused)
+                paused = false;
+            else
+                paused = true;
+
         }
     }
 }

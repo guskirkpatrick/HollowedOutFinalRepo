@@ -7,15 +7,19 @@ public class Background : MonoBehaviour
 
      [SerializeField] private GameObject Wall;
      [SerializeField] private int x = 0;
-    // Start is called before the first frame update
+    
+       private GameManager GM;
     void Start()
     {
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (GM.gameOver || Input.GetKeyDown(KeyCode.Tab))
+
+            Destroy(gameObject);
     }
 
     //Spawns a new background object when the player hits the trigger 
