@@ -10,6 +10,7 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] private GameObject spike = null;
     [SerializeField] private GameObject BulletPickUp = null;
+    [SerializeField] private GameObject Enemy = null;
     [SerializeField] private GameObject player = null;
 
     private int PlatformCount = 0;
