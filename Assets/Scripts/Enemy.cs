@@ -5,19 +5,29 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float moveSpeed = 5;
-    private bool movingRight=false; 
+    private bool movingRight=false;
+    private GameManager GM;
 
+    
+    //[SerializeField] private AudioSource spawn;
     // Update is called once per frame
     void Start()
     {
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         int random = Random.Range(0, 1);
         if (random == 0)
             movingRight = true;
+       // spikeSoundEffect.Play();
+        //spawn.Play();
 
     }
     void Update()
     {
         move();
+        if(GM.gameOver || Input.GetKeyDown(KeyCode.Tab))
+            Destroy(gameObject);
+
+
     }
 
     void move()

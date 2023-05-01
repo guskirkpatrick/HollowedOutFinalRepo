@@ -12,13 +12,13 @@ public class player : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     
     [SerializeField] public int bullets = 5;
-    [SerializeField] private int lives = 3;
+    [SerializeField] private int lives = 5;
     [SerializeField] private int permaScore=0;
     [SerializeField] private int tempScore = 0;
-
     [SerializeField] private AudioSource spikeSoundEffect;
     [SerializeField] private AudioSource shootSoundEffect;
     [SerializeField] private AudioSource bulletPickupSoundEffect;
+    [SerializeField] private AudioSource EnemyDeath;
 
 
     //script accesors
@@ -137,7 +137,7 @@ public class player : MonoBehaviour
         tempScore= 0;
         UI.UpdateScore(0);
         UI.UpdateBullets(bullets);
-        lives = 3;
+        lives = 5;
         SBG.x = 0; 
         UI.UpdateLives(lives);
         GM.paused = false;
@@ -173,13 +173,29 @@ public class player : MonoBehaviour
 
         if (collision.tag == "BulletPickUp")
         {
-            bullets+=2;
+            bullets+=3;
             UI.UpdateBullets(bullets);
             //the below plays a sound effect when bullet is picked up -Travis
             bulletPickupSoundEffect.Play();
         }
 
-        
+        if (collision.tag == "Enemy")
+        {
+            //bounce  
+         
+            lives--;
+            UI.UpdateLives(lives);
+            //The below plays a sound when player hits spikes -Travis
+            EnemyDeath.Play();
+
+            if(lives <= 0)
+            {
+                GM.gameOver = true;
+            }
+        }
+
+
+
 
     }
 }
