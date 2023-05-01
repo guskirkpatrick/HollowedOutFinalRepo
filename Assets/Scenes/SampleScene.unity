@@ -1308,7 +1308,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spike: {fileID: 1697292591414377703, guid: cf4aefe6433d6654eaa555e3f01ae677, type: 3}
   BulletPickUp: {fileID: 6255446149698073660, guid: f06bf23d3aef6a34fbb627b982f26c6a, type: 3}
-  player: {fileID: 0}
+  Enemy: {fileID: 0}
+  player: {fileID: 1095152488198916247}
 --- !u!4 &1120086358
 Transform:
   m_ObjectHideFlags: 0
