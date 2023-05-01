@@ -17,7 +17,12 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
-       if (movingRight)
+        move();
+    }
+
+    void move()
+    {
+        if (movingRight)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
         }
@@ -25,7 +30,7 @@ public class Enemy : MonoBehaviour
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
         }
-        
+
         if (transform.position.x >= 12f)
         {
             movingRight = false;
@@ -34,5 +39,20 @@ public class Enemy : MonoBehaviour
         {
             movingRight = true;
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // destroy the bullet when it hits something
+        if (collision.tag == "Player")
+
+            Destroy(gameObject);
+
+                else if (collision.tag == "Bullet")
+
+            Destroy(gameObject);
+        else
+            movingRight= !movingRight;
+
+
     }
 }

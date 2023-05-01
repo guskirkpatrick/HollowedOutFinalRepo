@@ -22,7 +22,7 @@ public class FireableBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // destroy the bullet when it hits something
-        if (collision.tag == "enemy")
+        if (collision.tag == "Enemy")
             PL.addScore(5);
         Destroy(gameObject);
 
